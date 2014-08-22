@@ -1,0 +1,21 @@
+{
+	"name": "gigante/liz",    
+    "description": "Liz is a simple MVC structure written in php",
+    "keywords": ["MVC"],    
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hiarison Gigante",
+            "email": "gigantedesousa@gmail.com"
+        }
+    ],
+    "require": {
+        "respect/config": "1.0.1"
+    },
+    "autoload": {
+        "psr-0": {
+            "App": "src/",
+            "Liz": "lib/"
+        }
+    }
+}
