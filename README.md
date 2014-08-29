@@ -117,6 +117,7 @@ Create the models in the folder `./src/App/Models`. Follow example:
 ```
 
 To call this model in some Controller follow the steps:
+
 1. Declare `use App\Models\ModelTest` in your Controller
 2. Just instantiate the model in function `$model = new ModelTest()`
 
