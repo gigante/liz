@@ -11,7 +11,8 @@ namespace Liz\Core;
 
 use Liz\Core\Configurator as Config;
 
-class View{
+class View
+{
     private $config;
     private $viewPath;
     private $layoutPath;
@@ -24,7 +25,8 @@ class View{
     /**
      * Gets the config located at ./src/App/Configs/Application.ini
      */
-    public function __construct(){
+    public function __construct()
+    {
         $this->config = Config::getConfig();
     }
 
@@ -33,8 +35,9 @@ class View{
      * e.g. http://localhost/example returns /example
      * @return string
      */
-    public function baseUrl(){
-        echo (dirname($_SERVER['PHP_SELF'])=='/') ? '' : dirname($_SERVER['PHP_SELF']);
+    public function baseUrl()
+    {
+        return (dirname($_SERVER['PHP_SELF'])=='/') ? '' : dirname($_SERVER['PHP_SELF']);
     }
 
     /**
@@ -42,7 +45,8 @@ class View{
      * @param string $controller Controller Name
      * @param string $action Action Name
      */
-    public function setView($controller, $action){
+    public function setView($controller, $action)
+    {
         $controllerAction = strtolower($controller) . '/'. ucfirst($action);             
         $this->viewPath = __DIR__ . self::PATH_VIEW . '/' . $controllerAction . '.phtml';        
     }
@@ -51,28 +55,31 @@ class View{
      * Set the layout to render before the view
      * @param string $layout to render
      */
-    public function setLayout($layout=''){ 
+    public function setLayout($layout='')
+    { 
         $this->layoutName = $layout; 
     }
 
     /**
      * Disable the layout render     
      */
-    public function disableLayout(){ 
+    public function disableLayout()
+    { 
         $this->disableLayout = true; 
     }
 
     /**
      * Set the indicated layout or loads the default (configured at Application.ini)     
      */
-    private function loadLayout(){
+    private function loadLayout()
+    {
         //Verify if layout was disabled
-        if($this->disableLayout==false){ 
+        if($this->disableLayout==false) { 
             //checks if it is set a layout different of default 
-            if((!isset($this->layoutName)) || (empty($this->layoutName))){             
+            if((!isset($this->layoutName)) || (empty($this->layoutName))) {
                 $config_active = $this->config->getItem('config')['app.layouts.active'];
                 //if layout is active (configured at Application.ini)
-                if($config_active=='true'){ 
+                if($config_active=='true') { 
                     $defaultLayout = ucfirst($this->config->getItem('config')['app.layout.default']);
                     $this->layoutPath = __DIR__ . self::PATH_LAYOUT . '/' . $defaultLayout . '.phtml';
                 }
@@ -88,10 +95,11 @@ class View{
      * Render the layout (if set)
      * or render only the view content
      */
-    public function render(){ 
+    public function render()
+    { 
         $this->loadLayout();        
-        if(!empty($this->layoutPath)){
-            if(is_readable($this->layoutPath)){
+        if(!empty($this->layoutPath)) {
+            if(is_readable($this->layoutPath)) {
                 include_once $this->layoutPath;                
             } else {
                 throw new Exception("Error to process layout");                
@@ -104,8 +112,9 @@ class View{
     /**
      * Render the view without layout     
      */
-    private function showViewContent(){
-        if(is_readable($this->viewPath)){
+    private function showViewContent()
+    {
+        if(is_readable($this->viewPath)) {
             include_once $this->viewPath;
         }
     }
@@ -115,7 +124,8 @@ class View{
      * @param string varible name
      * @param string variable value
      */
-    public function __set($field, $value){ 
+    public function __set($field, $value)
+    { 
         $this->data[$field] = $value; 
     }
     
@@ -124,11 +134,11 @@ class View{
      * @param  string $field variable name
      * @return mixed varible value
      */
-    public function __get($field){        
+    public function __get($field)
+    {        
         if (array_key_exists($field, $this->data)) {
             return $this->data[$field];
         }        
         return null;
     } 
-
 }

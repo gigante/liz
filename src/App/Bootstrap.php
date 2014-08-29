@@ -12,12 +12,14 @@ namespace App;
 use Liz\Core\Bootstrapper;
 use Liz\Core\View;
 
-class Bootstrap{
+class Bootstrap
+{
 	/**
 	 * This function instantiates the controller, performs related action 
 	 * and calls the view's render method
 	 */
-    public function run(){
+    public function run()
+    {
 		// Front Controller configuration
 		$bootstrapper = new Bootstrapper();	
 		$controllerName = $bootstrapper->getControllerName();		

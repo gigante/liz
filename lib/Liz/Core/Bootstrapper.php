@@ -11,7 +11,8 @@ namespace Liz\Core;
 
 use Liz\Core\Controller;
 
-class Bootstrapper {    
+class Bootstrapper
+{    
     private $request;
     private $segments;
 
@@ -22,17 +23,19 @@ class Bootstrapper {
     /**
      * The constructor initializes the following methods
      */
-    public function __construct() {        
+    public function __construct()
+    {        
         $this->initRequest();
         $this->initSegments();
-        $this->initAttributes(); //seta os dois parametros (controller e action) na classe como atributos
-        $this->initParams(); //relaciona todos os demais parametros        
+        $this->initAttributes();
+        $this->initParams();
     }
 
     /**
      * Evaluates the request's URL     
      */
-    private function initRequest() {        
+    private function initRequest() 
+    {        
         $self = (dirname($_SERVER['PHP_SELF'])=='/') ? '' : dirname($_SERVER['PHP_SELF']);        
         $this->request = str_replace($self, '', $_SERVER['REQUEST_URI']);        
     }
@@ -40,7 +43,8 @@ class Bootstrapper {
     /**
      * Checks and stores all the segments of the URL 
      */
-    private function initSegments() {
+    private function initSegments() 
+    {
         $segments = explode('/', $this->request);
         $countSegments = 0;
         for ($i=0; $i < count($segments); $i++) {
@@ -63,7 +67,8 @@ class Bootstrapper {
      * the param $controllerName is ControllerExample
      * the para $actionName is ActionExample
      */
-    private function initAttributes() {
+    private function initAttributes() 
+    {
         $this->controllerName = $this->segments[0];
         $this->actionName = $this->segments[1];
     }
@@ -73,7 +78,8 @@ class Bootstrapper {
      * e.g. http://example.com/c/a/Param1/Param2/Param3
      * the param $params[] = ['Param1', 'Param2', Param3]
      */
-    private function initParams() {
+    private function initParams() 
+    {
         $this->_params = array();
         $tam = count($this->segments);
         for ($idx = 2; $idx < $tam; $idx++) {
@@ -84,21 +90,24 @@ class Bootstrapper {
     /**     
      * @return string Controllers name
      */
-    public function getControllerName(){
+    public function getControllerName()
+    {
         return ucfirst($this->controllerName);
     }
 
     /**     
      * @return string Actions name
      */
-    public function getActionName(){
+    public function getActionName()
+    {
         return strtolower($this->actionName);
     }    
 
     /**     
      * @return string The array of params
      */
-    public function getParams(){
+    public function getParams()
+    {
         return $this->params;
     }
 }

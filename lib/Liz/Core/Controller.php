@@ -11,7 +11,8 @@ namespace Liz\Core;
 
 use Liz\Core\View;
 
-class Controller{
+class Controller
+{
     public $params;
     public $view;
 }

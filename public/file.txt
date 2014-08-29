@@ -1,1 +1,0 @@
-This folder is defined to store the public files, like css, js, fonts and images.

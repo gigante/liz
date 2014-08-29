@@ -9,7 +9,8 @@ class ModelTest extends Model
 	/**
 	 * Instantiates a new PDO connection
 	 */
-	public function __construct(){
+	public function __construct()
+	{
 		$pdoConnection = newConnection();
 	}	
 }

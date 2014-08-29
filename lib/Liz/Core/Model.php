@@ -12,14 +12,16 @@ namespace Liz\Core;
 use PDO;
 use Liz\Core\Configurator as Config;
 
-class Model{
+class Model
+{
 	protected $dsn;
 	private $config;
 
 	/**
 	 * Loads the default configuration: development or production
 	 */
-	public function __construct(){		
+	public function __construct()
+	{		
 		$this->config = Config::getConfig();
 		$this->dsn = $this->config->getItem('config')['env'];		
 	}	
@@ -30,8 +32,9 @@ class Model{
 	 * @param  string $dsn name of database parameters group
 	 * @return PDO returns a PDO instance
 	 */
-	public function newConnection($dsn = null){
-		if($dsn == null){
+	public function newConnection($dsn = null)
+	{
+		if($dsn == null) {
 			$user   = $this->config->getItem($this->dsn)['db.username'];
 			$pass   = $this->config->getItem($this->dsn)['db.password'];
 			$host   = $this->config->getItem($this->dsn)['db.host'];
