@@ -79,6 +79,7 @@ Your Application will be developed in this folder.
 
 Create the controllers in the folder `./src/App/Controllers`. Follow example:
 
+```php
     <?php
     
     namespace App\Controllers;
@@ -92,12 +93,14 @@ Create the controllers in the folder `./src/App/Controllers`. Follow example:
         	# code
         }
     }
+```
     
 > `ps:` This Controller automatically show the View located at `./src/App/Views/Example/Index.phtml`
 
 ## Models
 Create the models in the folder `./src/App/Models`. Follow example:
 
+```php
     <?php
     
     namespace App\Models;
@@ -111,6 +114,7 @@ Create the models in the folder `./src/App/Models`. Follow example:
     		# code
     	}
     }
+```
 
 To call this model in some Controller follow the steps:
 1. Declare `use App\Models\ModelTest` in your Controller
