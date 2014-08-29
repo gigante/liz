@@ -47,7 +47,7 @@ class View
      */
     public function setView($controller, $action)
     {
-        $controllerAction = strtolower($controller) . '/'. ucfirst($action);             
+        $controllerAction = ucfirst($controller) . '/'. ucfirst($action);             
         $this->viewPath = __DIR__ . self::PATH_VIEW . '/' . $controllerAction . '.phtml';        
     }
 
