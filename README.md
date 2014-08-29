@@ -127,7 +127,7 @@ You can put your HTML combined with small pieces of php (passed by Controller, o
 
 ## Credits
 
-
+I was inspired by the code of [Ricardo Coelho](https://github.com/ramcoelho) and your project [grs](https://github.com/ramcoelho/grs). Thank you bro!
 
 ##  Doubts, suggestions?
 
