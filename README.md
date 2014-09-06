@@ -15,12 +15,12 @@ Intends to be a useful way to turn structure of small projects to an MVC archite
 create file ".htaccess" in the root project with this content
 
 ```ApacheConf
-    <IfModule mod_rewrite.c>
-        RewriteEngine On    
-        RewriteCond %{REQUEST_FILENAME} !-d [OR]
-        RewriteCond %{REQUEST_FILENAME} !-f    
-        RewriteRule !\.(js|ico|gif|jpg|png|css|htm|html|txt|mp3)$ index.php [NC,L]
-    </IfModule>
+<IfModule mod_rewrite.c>
+    RewriteEngine On    
+    RewriteCond %{REQUEST_FILENAME} !-d [OR]
+    RewriteCond %{REQUEST_FILENAME} !-f    
+    RewriteRule !\.(js|ico|gif|jpg|png|css|htm|html|txt|mp3)$ index.php [NC,L]
+</IfModule>
 ```
 
 ### Requirements
@@ -79,19 +79,19 @@ Your Application will be developed in this folder.
 Create the controllers in the folder `./src/App/Controllers`. Follow example:
 
 ```php
-    <?php
-    
-    namespace App\Controllers;
-    
-    use Liz\Core\Controller;    
-    
-    class Example extends Controller
-    {    
-        public function index()
-        { 
-        	# code
-        }
+<?php
+
+namespace App\Controllers;
+
+use Liz\Core\Controller;    
+
+class Example extends Controller
+{    
+    public function index()
+    { 
+    	# code
     }
+}
 ```
     
 > `ps:` This Controller automatically show the View located at `./src/App/Views/Example/Index.phtml`
@@ -100,19 +100,19 @@ Create the controllers in the folder `./src/App/Controllers`. Follow example:
 Create the models in the folder `./src/App/Models`. Follow example:
 
 ```php
-    <?php
-    
-    namespace App\Models;
-    
-    use Liz\Core\Model;
-    
-    class ModelTest extends Model
-    {
-    	public function someFunction()
-    	{
-    		# code
-    	}
-    }
+<?php
+
+namespace App\Models;
+
+use Liz\Core\Model;
+
+class ModelTest extends Model
+{
+	public function someFunction()
+	{
+		# code
+	}
+}
 ```
 
 To call this model in some Controller follow the steps:
