@@ -14,15 +14,14 @@ Intends to be a useful way to turn structure of small projects to an MVC archite
 
 create file ".htaccess" in the root project with this content
 
+```ApacheConf
     <IfModule mod_rewrite.c>
-    	RewriteEngine On
-    	RewriteCond %{REQUEST_FILENAME} -s [OR]
-    	RewriteCond %{REQUEST_FILENAME} -l [OR]
-    	RewriteCond %{REQUEST_FILENAME} !-d
-    	RewriteCond %{REQUEST_FILENAME} !-f
-    	RewriteRule ^.*$ - [NC,L]
-    	RewriteRule !\.(js|ico|gif|jpg|png|css|htm|html|txt|mp3)$ index.php [NC,L]
+        RewriteEngine On    
+        RewriteCond %{REQUEST_FILENAME} !-d [OR]
+        RewriteCond %{REQUEST_FILENAME} !-f    
+        RewriteRule !\.(js|ico|gif|jpg|png|css|htm|html|txt|mp3)$ index.php [NC,L]
     </IfModule>
+```
 
 ### Requirements
 
