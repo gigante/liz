@@ -14,46 +14,46 @@ use Liz\Core\Configurator as Config;
 
 class Model
 {
-	protected $dsn;
-	private $config;
+    protected $dsn;
+    private $config;
 
-	/**
-	 * Loads the default configuration: development or production
-	 */
-	public function __construct()
-	{		
-		$this->config = Config::getConfig();
-		$this->dsn = $this->config->getItem('config')['env'];		
-	}	
+    /**
+     * Loads the default configuration: development or production
+     */
+    public function __construct()
+    {        
+        $this->config = Config::getConfig();
+        $this->dsn = $this->config->getItem('config')['env'];        
+    }    
 
-	/**
-	 * Instantiates the defined database parameters on env configuration 
-	 * or based on passed parameter
-	 * @param  string $dsn name of database parameters group
-	 * @return PDO returns a PDO instance
-	 */
-	public function newConnection($dsn = null)
-	{
-		if($dsn == null) {
-			$db     = $this->config->getItem($this->dsn)['db'];
-			$user   = $this->config->getItem($this->dsn)['db.username'];
-			$pass   = $this->config->getItem($this->dsn)['db.password'];
-			$host   = $this->config->getItem($this->dsn)['db.host'];
-			$dbname = $this->config->getItem($this->dsn)['db.dbname'];
-			$port   = $this->config->getItem($this->dsn)['db.port'];	
-		} else {
-			$db     = $this->config->getItem($dsn)['db'];
-			$user   = $this->config->getItem($dsn)['db.username'];
-			$pass   = $this->config->getItem($dsn)['db.password'];
-			$host   = $this->config->getItem($dsn)['db.host'];
-			$dbname = $this->config->getItem($dsn)['db.dbname'];
-			$port   = $this->config->getItem($dsn)['db.port'];
-		}		
+    /**
+     * Instantiates the defined database parameters on env configuration 
+     * or based on passed parameter
+     * @param  string $dsn name of database parameters group
+     * @return PDO returns a PDO instance
+     */
+    public function newConnection($dsn = null)
+    {
+        if($dsn == null) {
+            $db     = $this->config->getItem($this->dsn)['db'];
+            $user   = $this->config->getItem($this->dsn)['db.username'];
+            $pass   = $this->config->getItem($this->dsn)['db.password'];
+            $host   = $this->config->getItem($this->dsn)['db.host'];
+            $dbname = $this->config->getItem($this->dsn)['db.dbname'];
+            $port   = $this->config->getItem($this->dsn)['db.port'];    
+        } else {
+            $db     = $this->config->getItem($dsn)['db'];
+            $user   = $this->config->getItem($dsn)['db.username'];
+            $pass   = $this->config->getItem($dsn)['db.password'];
+            $host   = $this->config->getItem($dsn)['db.host'];
+            $dbname = $this->config->getItem($dsn)['db.dbname'];
+            $port   = $this->config->getItem($dsn)['db.port'];
+        }        
 
-		if($db == 'mysql') {
-			return new PDO("mysql:host={$host};port={$port};dbname={$dbname}", $user, $pass);	
-		} else if($db == 'pgsql') {
-			return new PDO("pgsql:host={$host};port={$port};dbname={$dbname};user={$user};password={$pass}");
-		}
-	}
+        if($db == 'mysql') {
+            return new PDO("mysql:host={$host};port={$port};dbname={$dbname}", $user, $pass);    
+        } else if($db == 'pgsql') {
+            return new PDO("pgsql:host={$host};port={$port};dbname={$dbname};user={$user};password={$pass}");
+        }
+    }
 }

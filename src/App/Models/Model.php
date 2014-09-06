@@ -6,11 +6,11 @@ use Liz\Core\Model;
 
 class ModelTest extends Model
 {
-	/**
-	 * Instantiates a new PDO connection
-	 */
-	public function __construct()
-	{
-		$pdoConnection = newConnection();
-	}	
+    /**
+     * Instantiates a new PDO connection
+     */
+    public function __construct()
+    {
+        $pdoConnection = newConnection();
+    }
 }
