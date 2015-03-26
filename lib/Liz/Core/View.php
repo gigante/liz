@@ -77,10 +77,10 @@ class View
         if($this->disableLayout==false) { 
             //checks if it is set a layout different of default 
             if((!isset($this->layoutName)) || (empty($this->layoutName))) {
-                $config_active = $this->config->getItem('config')['app.layouts.active'];
+                $config_active = $this->config['config']['app.layouts.active'];
                 //if layout is active (configured at Application.ini)
                 if($config_active=='true') { 
-                    $defaultLayout = ucfirst($this->config->getItem('config')['app.layout.default']);
+                    $defaultLayout = ucfirst($this->config['config']['app.layout.default']);
                     $this->layoutPath = __DIR__ . self::PATH_LAYOUT . '/' . $defaultLayout . '.phtml';
                 }
             } else {                

@@ -23,7 +23,7 @@ class Model
     public function __construct()
     {        
         $this->config = Config::getConfig();
-        $this->dsn = $this->config->getItem('config')['env'];        
+        $this->dsn = $this->config['config']['env'];        
     }    
 
     /**
@@ -35,19 +35,19 @@ class Model
     public function newConnection($dsn = null)
     {
         if($dsn == null) {
-            $db     = $this->config->getItem($this->dsn)['db'];
-            $user   = $this->config->getItem($this->dsn)['db.username'];
-            $pass   = $this->config->getItem($this->dsn)['db.password'];
-            $host   = $this->config->getItem($this->dsn)['db.host'];
-            $dbname = $this->config->getItem($this->dsn)['db.dbname'];
-            $port   = $this->config->getItem($this->dsn)['db.port'];    
+            $db     = $this->config[$this->dsn]['db'];
+            $user   = $this->config[$this->dsn]['db.username'];
+            $pass   = $this->config[$this->dsn]['db.password'];
+            $host   = $this->config[$this->dsn]['db.host'];
+            $dbname = $this->config[$this->dsn]['db.dbname'];
+            $port   = $this->config[$this->dsn]['db.port'];    
         } else {
-            $db     = $this->config->getItem($dsn)['db'];
-            $user   = $this->config->getItem($dsn)['db.username'];
-            $pass   = $this->config->getItem($dsn)['db.password'];
-            $host   = $this->config->getItem($dsn)['db.host'];
-            $dbname = $this->config->getItem($dsn)['db.dbname'];
-            $port   = $this->config->getItem($dsn)['db.port'];
+            $db     = $this->config[$dsn]['db'];
+            $user   = $this->config[$dsn]['db.username'];
+            $pass   = $this->config[$dsn]['db.password'];
+            $host   = $this->config[$dsn]['db.host'];
+            $dbname = $this->config[$dsn]['db.dbname'];
+            $port   = $this->config[$dsn]['db.port'];
         }        
 
         if($db == 'mysql') {

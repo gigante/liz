@@ -9,19 +9,23 @@
 
 namespace Liz\Core;
 
-use Respect\Config\Container;
-
 class Configurator
 {	
     /**
      * This function create the Config object based in the $filename param
      * @param  string $filename located at ./src/App/Configs/
-     * @return Respect\Config\Container
+     * @return array contain the src/App/Configs/$filename.php
      */
     public static function getConfig($filename='Application')
     {
         $filename = ucfirst($filename);
-        $path = "/../../../src/App/Configs/{$filename}.ini";
-        return new Container(__DIR__ . $path);
+        $path = dirname(__FILE__) . "/../../../src/App/Configs/{$filename}.ini";
+
+        $config = array();
+        if(file_exists($path)){
+            $config = require($path);
+        }
+        
+        return $config;        
     }
 }
