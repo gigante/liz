@@ -19,7 +19,7 @@ class Configurator
     public static function getConfig($filename='Application')
     {
         $filename = ucfirst($filename);
-        $path = dirname(__FILE__) . "/../../../src/App/Configs/{$filename}.ini";
+        $path = dirname(__FILE__) . "/../../../src/App/Configs/{$filename}.php";
 
         $config = array();
         if(file_exists($path)){
